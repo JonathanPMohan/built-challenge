@@ -1,22 +1,11 @@
 ≠≠<template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="hHh LpR fFf">
     <!-- Header Element -->
     <q-header elevated>
       <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="leftDrawerOpen = !leftDrawerOpen"
-        />
-
-        <q-toolbar-title>
+        <q-toolbar-title class="absolute-center">
           Built Challenge App
         </q-toolbar-title>
-
-        <div>2020 {{ appTitle }}</div>
       </q-toolbar>
     </q-header>
 <!-- Footer Element -->
@@ -33,11 +22,12 @@
       </q-footer>
 
     <q-drawer
+      :width="200"
       v-model="leftDrawerOpen"
       :breakpoint="767"
       show-if-above
       bordered
-      content-class="bg-grey-1"
+      content-class="bg-grey-2"
     >
       <q-list>
         <q-item-label
@@ -76,7 +66,6 @@ export default {
   data() {
     return {
       leftDrawerOpen: false,
-      appTitle: 'JMohan',
       navs: [
         {
           label: 'Page A',
@@ -108,6 +97,12 @@ export default {
   @media screen and (min-width: 768px) {
     .q-footer {
       display: none;
+    }
+  }
+
+  .q-drawer {
+    .q-router-link--exact-active {
+    color: primary !important;
     }
   }
 </style>
