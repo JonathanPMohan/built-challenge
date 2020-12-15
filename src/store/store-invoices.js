@@ -1,3 +1,5 @@
+import Vue from 'vue';
+
 const state = {
   invoices: {
     ID1: {
@@ -27,11 +29,17 @@ const mutations = {
     console.log('payload (from mutation): ', payload);
     Object.assign(state.invoices[payload.id], payload.updates);
   },
+  deleteInvoice(state, id) {
+    Vue.delete(state.invoices, id);
+  },
 };
 
 const actions = {
   updateInvoice({ commit }, payload) {
     commit('updateInvoice', payload);
+  },
+  deleteInvoice({ commit }, id) {
+    commit('deleteInvoice', id);
   },
 };
 
