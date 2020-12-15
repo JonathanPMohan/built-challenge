@@ -1,11 +1,13 @@
 <template>
   <q-item
-      @click="invoice.paid = !invoice.paid"
+      @click="updateInvoice({ id: id, updates: { paid: !invoice.paid } })"
       :class="!invoice.paid ? 'bg-grey-1' : 'bg-grey-4'"
       clickable
       v-ripple>
         <q-item-section side top>
-          <q-checkbox v-model="invoice.paid" />
+          <q-checkbox
+          :value="invoice.paid"
+          class="no-pointer-events" />
         </q-item-section>
         <q-item-section>
           <q-item-label
@@ -36,8 +38,13 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   props: ['invoice', 'id'],
+  methods: {
+    ...mapActions('invoices', ['updateInvoice']),
+  },
 };
 </script>
 
