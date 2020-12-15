@@ -1,4 +1,5 @@
 <template>
+
   <q-item
       @click="updateInvoice({ id: id, updates: { paid: !invoice.paid } })"
       :class="!invoice.paid ? 'bg-grey-1' : 'bg-grey-4'"
@@ -16,7 +17,8 @@
           </q-item-label>
         </q-item-section>
 
-        <q-item-section side>
+        <q-item-section
+        side>
           <div class="row">
           <q-icon
           name="event"
@@ -34,6 +36,18 @@
           class="q-mr-sm" /> <b> ${{ invoice.total}}</b></small>
           </div>
         </q-item-section>
+
+        <div class="col">
+           <q-btn
+           class="q-ml-xl"
+           @click.stop="promptToDelete(id)"
+           flat
+           round
+           dense
+           color="primary"
+           icon="delete" />
+        </div>
+
       </q-item>
 </template>
 
@@ -43,7 +57,23 @@ import { mapActions } from 'vuex';
 export default {
   props: ['invoice', 'id'],
   methods: {
-    ...mapActions('invoices', ['updateInvoice']),
+    ...mapActions('invoices', ['updateInvoice', 'deleteInvoice']),
+    promptToDelete(id) {
+      this.$q.dialog({
+        title: 'Confirm Delete',
+        message: 'Delete this invoice?',
+        ok: {
+          push: true,
+          color: 'blue',
+        },
+        cancel: {
+          color: 'negative',
+        },
+        persistent: true,
+      }).onOk(() => {
+        this.deleteInvoice(id);
+      });
+    },
   },
 };
 </script>
