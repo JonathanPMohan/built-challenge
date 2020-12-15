@@ -3,8 +3,9 @@
     <!-- Header Element -->
     <q-header elevated>
       <q-toolbar>
-        <q-toolbar-title class="absolute-center">
-          Built Challenge App
+        <img class="built-logo" src="~assets/built.png"/>
+        <q-toolbar-title class="fixed-right q-mt-sm q-mr-sm">
+          Payment App
         </q-toolbar-title>
       </q-toolbar>
     </q-header>
@@ -29,13 +30,7 @@
       bordered
       content-class="bg-grey-2"
     >
-      <q-list>
-        <q-item-label
-          header
-          class="text-grey-8"
-        >
-          Navigation
-        </q-item-label>
+      <q-list class="q-mt-sm">
 
         <q-item
         v-for="nav in navs"
@@ -104,5 +99,10 @@ export default {
     .q-router-link--exact-active {
     color: primary !important;
     }
+  }
+
+  .built-logo {
+    width: 25%;
+    padding: 1%;
   }
 </style>
