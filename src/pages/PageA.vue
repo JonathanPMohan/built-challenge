@@ -11,6 +11,23 @@
 
     </q-list>
 <!-- End of List -->
+<!-- Add Button -->
+<div class="absolute-bottom text-center q-mb-lg">
+  <q-btn
+    @click="showAddInvoice = true"
+    round
+    color="primary"
+    size="24px"
+    icon="add"
+    />
+</div>
+<!-- End of Add Button -->
+<!-- Add Dialog Popup -->
+<q-dialog
+  v-model="showAddInvoice">
+  <add-invoice />
+    </q-dialog>
+<!-- End of Add Dialog Popup -->
   </q-page>
 </template>
 
@@ -18,14 +35,21 @@
 import { mapGetters } from 'vuex';
 
 export default {
+  data() {
+    return {
+      showAddInvoice: true,
+    };
+  },
   computed: {
     ...mapGetters('invoices', ['invoices']),
   },
   components: {
     invoice: () => import('components/Invoices/Invoice.vue'),
+    'add-invoice': () => import('components/Invoices/Modals/AddInvoice.vue'),
   },
 };
 </script>
+    AddInvoice
 
 <style>
 
