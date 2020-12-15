@@ -20,13 +20,19 @@ const state = {
     },
   },
 };
+/* eslint no-shadow: ["error", { "allow": ["state"] }] */
 
 const mutations = {
-
+  updateInvoice(state, payload) {
+    console.log('payload (from mutation): ', payload);
+    Object.assign(state.invoices[payload.id], payload.updates);
+  },
 };
 
 const actions = {
-
+  updateInvoice({ commit }, payload) {
+    commit('updateInvoice', payload);
+  },
 };
 
 const getters = {
