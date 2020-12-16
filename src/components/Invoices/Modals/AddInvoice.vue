@@ -17,7 +17,9 @@
         <div class="row q-mb-xs">
           <q-input
           class="col"
+          clearable
           outlined
+          autofocus
           v-model="invoiceToSubmit.name"
           label="Invoice Name"
           ref="name"
@@ -27,6 +29,7 @@
         <div class="row q-mb-xs">
              <q-input
              label="Due Date"
+             clearable
              outlined
              v-model="invoiceToSubmit.dueDate"
              :rules="[val => !!val || 'Field is required']">
@@ -43,10 +46,13 @@
     </q-input>
         </div>
 
-<div class="row q-mb-xs">
+  <div
+  v-if="invoiceToSubmit.dueDate"
+    class="row q-mb-xs">
      <q-input
      class="col"
       outlined
+      clearable
       v-model="invoiceToSubmit.total"
       label="Invoice Total"
       :rules="[val => !!val || 'Field is required']" />
