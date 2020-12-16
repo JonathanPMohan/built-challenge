@@ -25,7 +25,7 @@
 <!-- Add Dialog Popup -->
 <q-dialog
   v-model="showAddInvoice">
-  <add-invoice />
+  <add-invoice @close="showAddInvoice = false" />
     </q-dialog>
 <!-- End of Add Dialog Popup -->
   </q-page>
@@ -37,7 +37,7 @@ import { mapGetters } from 'vuex';
 export default {
   data() {
     return {
-      showAddInvoice: true,
+      showAddInvoice: false,
     };
   },
   computed: {

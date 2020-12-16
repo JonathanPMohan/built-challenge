@@ -1,8 +1,8 @@
 <template>
 
   <q-card>
-        <q-card-section class="row">
-          <div class="text-h6">Add Invoice</div>
+      <q-card-section class="row">
+        <div class="text-h6">Add Invoice</div>
           <q-space />
           <q-btn
           flat
@@ -11,20 +11,25 @@
           icon="close"
           v-close-popup />
         </q-card-section>
-
-        <q-card-section class="q-pt-none">
-          <div class="row q-mb-sm">
+<!-- Beginning of Form Component -->
+        <q-form @submit.prevent="submitForm">
+    <q-card-section class="q-pt-none">
+        <div class="row q-mb-xs">
           <q-input
           class="col"
           outlined
           v-model="invoiceToSubmit.name"
-          label="Invoice Name" />
+          label="Invoice Name"
+          ref="name"
+          lazy-rules
+          :rules="[val => !!val || 'Field is required']" />
         </div>
-        <div class="row q-mb-sm">
+        <div class="row q-mb-xs">
              <q-input
              label="Due Date"
              outlined
-             v-model="invoiceToSubmit.dueDate">
+             v-model="invoiceToSubmit.dueDate"
+             :rules="[val => !!val || 'Field is required']">
       <template v-slot:append>
         <q-icon
         name="event"
@@ -38,27 +43,32 @@
     </q-input>
         </div>
 
-<div class="row q-mb-sm">
+<div class="row q-mb-xs">
      <q-input
      class="col"
       outlined
       v-model="invoiceToSubmit.total"
-      label="Invoice Total" />
+      label="Invoice Total"
+      :rules="[val => !!val || 'Field is required']" />
 </div>
 
-        </q-card-section>
-
-        <q-card-actions align="right">
+<q-card-actions align="right">
           <q-btn
-          flat
           label="SAVE"
           color="primary"
-          v-close-popup />
+          type="submit"
+          />
         </q-card-actions>
+
+        </q-card-section>
+        </q-form>
+        <!-- End of Form Component -->
       </q-card>
 </template>
 
 <script>
+
+import { mapActions } from 'vuex';
 
 export default {
   data() {
@@ -70,6 +80,19 @@ export default {
         paid: false,
       },
     };
+  },
+  methods: {
+    ...mapActions('invoices', ['addInvoice']),
+    submitForm() {
+      this.$refs.name.validate();
+      if (!this.$refs.name.hasError) {
+        this.submitInvoice();
+      }
+    },
+    submitInvoice() {
+      this.addInvoice(this.invoiceToSubmit);
+      this.$emit('close');
+    },
   },
 };
 </script>
