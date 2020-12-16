@@ -27,7 +27,6 @@ const state = {
 
 const mutations = {
   updateInvoice(state, payload) {
-    console.log('payload (from mutation): ', payload);
     Object.assign(state.invoices[payload.id], payload.updates);
   },
   deleteInvoice(state, id) {
@@ -57,7 +56,27 @@ const actions = {
 };
 
 const getters = {
-  invoices: () => state.invoices,
+  // invoices: () => state.invoices,
+  outstandingInvoices: (state) => {
+    const invoices = {};
+    Object.keys(state.invoices).forEach((key) => {
+      const invoice = state.invoices[key];
+      if (!invoice.paid) {
+        invoices[key] = invoice;
+      }
+    });
+    return invoices;
+  },
+  paidInvoices: (state) => {
+    const invoices = {};
+    Object.keys(state.invoices).forEach((key) => {
+      const invoice = state.invoices[key];
+      if (invoice.paid) {
+        invoices[key] = invoice;
+      }
+    });
+    return invoices;
+  },
 };
 
 export default {

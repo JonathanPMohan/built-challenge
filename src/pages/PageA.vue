@@ -1,19 +1,16 @@
 <template>
   <q-page q-pa-md>
+    <no-invoices
+    v-if="!Object.keys(outstandingInvoices).length" />
 <!-- List of Items -->
-    <q-list
-    v-if="Object.keys(invoices).length"
-    bordered
-    separator
-    class="q-ma-md">
-      <invoice
-      v-for="(invoice, key) in invoices"
-      :key="key"
-      :invoice="invoice"
-      :id="key"
-      ></invoice>
+    <outstanding-invoices
+      v-else
+      :outstandingInvoices="outstandingInvoices" />
 
-    </q-list>
+    <paid-invoices
+      v-if="Object.keys(paidInvoices).length"
+      :paidInvoices="paidInvoices" />
+
 <!-- End of List -->
 <!-- Add Button -->
 <div class="absolute-bottom text-center q-mb-lg">
@@ -45,14 +42,17 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('invoices', ['invoices']),
+    ...mapGetters('invoices', ['outstandingInvoices', 'paidInvoices']),
   },
   components: {
-    invoice: () => import('components/Invoices/Invoice.vue'),
     'add-invoice': () => import('components/Invoices/Modals/AddInvoice.vue'),
+    'outstanding-invoices': () => import('components/Invoices/OutstandingInvoices.vue'),
+    'paid-invoices': () => import('components/Invoices/PaidInvoices.vue'),
+    'no-invoices': () => import('components/Invoices/NoInvoices.vue'),
   },
 };
 </script>
+    NoInvoices
 
 <style lang="scss">
 

@@ -2,7 +2,7 @@
 
   <q-item
       @click="updateInvoice({ id: id, updates: { paid: !invoice.paid } })"
-      :class="!invoice.paid ? 'bg-grey-1' : 'bg-grey-4'"
+      :class="!invoice.paid ? 'bg-grey-1' : 'bg-grey-3'"
       clickable
       v-ripple>
         <q-item-section side top>
