@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import { uid } from 'quasar';
 
 const state = {
   invoices: {
@@ -32,6 +33,9 @@ const mutations = {
   deleteInvoice(state, id) {
     Vue.delete(state.invoices, id);
   },
+  addInvoice(state, payload) {
+    Vue.set(state.invoices, payload.id, payload.invoice);
+  },
 };
 
 const actions = {
@@ -40,6 +44,15 @@ const actions = {
   },
   deleteInvoice({ commit }, id) {
     commit('deleteInvoice', id);
+  },
+  addInvoice({ commit }, invoice) {
+    const invoiceId = uid();
+    const payload = {
+      id: invoiceId,
+      // using short hand method for invoice: invoice
+      invoice,
+    };
+    commit('addInvoice', payload);
   },
 };
 
