@@ -1,7 +1,7 @@
 <template>
 
   <q-card>
-      <modal-header>Add Invoice</modal-header>
+      <modal-header>Edit Invoice</modal-header>
 <!-- Beginning of Form Component -->
         <q-form @submit.prevent="submitForm">
 
@@ -31,18 +31,14 @@
 import { mapActions } from 'vuex';
 
 export default {
+  props: ['invoice', 'id'],
   data() {
     return {
-      invoiceToSubmit: {
-        name: '',
-        total: '',
-        dueDate: '',
-        paid: false,
-      },
+      invoiceToSubmit: {},
     };
   },
   methods: {
-    ...mapActions('invoices', ['addInvoice']),
+    ...mapActions('invoices', ['updateInvoice']),
     submitForm() {
       this.$refs.modalInvoiceName.$refs.name.validate();
       if (!this.$refs.modalInvoiceName.$refs.name.hasError) {
@@ -50,7 +46,10 @@ export default {
       }
     },
     submitInvoice() {
-      this.addInvoice(this.invoiceToSubmit);
+      this.updateInvoice({
+        id: this.id,
+        updates: this.invoiceToSubmit,
+      });
       this.$emit('close');
     },
   },
@@ -60,6 +59,11 @@ export default {
     'modal-due-date': () => import('components/Invoices/Modals/Shared/ModalDueDate.vue'),
     'modal-invoice-total': () => import('components/Invoices/Modals/Shared/ModalInvoiceTotal.vue'),
     'modal-save-button': () => import('components/Invoices/Modals/Shared/ModalButtons.vue'),
+  },
+  mounted() {
+    // this.invoiceToSubmit = Object.assign({}, this.invoice);
+    // using the spread operator instead for less verbose
+    this.invoiceToSubmit = { ...this.invoice };
   },
 };
 </script>

@@ -17,6 +17,25 @@
           </q-item-label>
         </q-item-section>
 
+        <q-item-section side>
+          <div class="row">
+          <q-btn
+            @click.stop="showEditInvoice = true"
+            flat
+            round
+            dense
+            color="dark"
+            icon="edit" />
+          <q-btn
+            @click.stop="promptToDelete(id)"
+            flat
+            round
+            dense
+            color="primary"
+            icon="delete" />
+            </div>
+        </q-item-section>
+
         <q-item-section
         side>
           <div class="row">
@@ -27,7 +46,7 @@
           ></q-icon>
           <q-item-label caption>{{ invoice.dueDate }}</q-item-label>
           </div>
-          <div class="row">
+          <div class="col">
           <small>
           <q-icon
           name="payment"
@@ -37,16 +56,25 @@
           </div>
         </q-item-section>
 
-        <div class="col">
+        <!-- Troubleshooting -->
+        <!-- <div class="col">
            <q-btn
-           class="q-ml-xl"
-           @click.stop="promptToDelete(id)"
-           flat
-           round
-           dense
-           color="primary"
-           icon="delete" />
-        </div>
+            class="q-ml-xl"
+            @click.stop="promptToDelete(id)"
+            flat
+            round
+            dense
+            color="primary"
+            icon="delete" /> -->
+            <!-- End of Troubleshooting -->
+        <!-- </div> -->
+            <q-dialog
+              v-model="showEditInvoice">
+                <edit-invoice
+                @close="showEditInvoice = false"
+                :invoice="invoice"
+                :id="id" />
+            </q-dialog>
 
       </q-item>
 </template>
@@ -56,6 +84,11 @@ import { mapActions } from 'vuex';
 
 export default {
   props: ['invoice', 'id'],
+  data() {
+    return {
+      showEditInvoice: false,
+    };
+  },
   methods: {
     ...mapActions('invoices', ['updateInvoice', 'deleteInvoice']),
     promptToDelete(id) {
@@ -74,6 +107,9 @@ export default {
         this.deleteInvoice(id);
       });
     },
+  },
+  components: {
+    'edit-invoice': () => import('components/Invoices/Modals/EditInvoice.vue'),
   },
 };
 </script>
