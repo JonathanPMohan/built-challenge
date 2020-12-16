@@ -1,7 +1,11 @@
 <template>
   <q-page q-pa-md>
 <!-- List of Items -->
-<q-list bordered class="q-ma-md" separator>
+    <q-list
+    v-if="Object.keys(invoices).length"
+    bordered
+    separator
+    class="q-ma-md">
       <invoice
       v-for="(invoice, key) in invoices"
       :key="key"
@@ -23,9 +27,9 @@
 </div>
 <!-- End of Add Button -->
 <!-- Add Dialog Popup -->
-<q-dialog
-  v-model="showAddInvoice">
-  <add-invoice @close="showAddInvoice = false" />
+  <q-dialog
+    v-model="showAddInvoice">
+      <add-invoice @close="showAddInvoice = false" />
     </q-dialog>
 <!-- End of Add Dialog Popup -->
   </q-page>
@@ -49,8 +53,7 @@ export default {
   },
 };
 </script>
-    AddInvoice
 
-<style>
+<style lang="scss">
 
 </style>
