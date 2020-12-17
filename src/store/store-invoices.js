@@ -22,8 +22,9 @@ const state = {
       dueDate: '2020/07/12',
     },
   },
+  search: '',
 };
-/* eslint no-shadow: ["error", { "allow": ["state"] }] */
+/* eslint no-shadow: ["error", { "allow": ["state", "getters"]}] */
 
 const mutations = {
   updateInvoice(state, payload) {
@@ -34,6 +35,9 @@ const mutations = {
   },
   addInvoice(state, payload) {
     Vue.set(state.invoices, payload.id, payload.invoice);
+  },
+  setSearch(state, value) {
+    state.search = value;
   },
 };
 
@@ -53,24 +57,46 @@ const actions = {
     };
     commit('addInvoice', payload);
   },
+  setSearch({ commit }, value) {
+    commit('setSearch', value);
+  },
 };
 
 const getters = {
   // invoices: () => state.invoices,
-  outstandingInvoices: (state) => {
+  invoicesFiltered: (state) => {
+    const invoicesFiltered = {};
+    if (state.search) {
+      Object.keys(state.invoices).forEach((key) => {
+        const invoice = state.invoices[key];
+        const invoiceNameLowerCase = invoice.name.toLowerCase();
+        const searchLowerCase = state.search.toLowerCase();
+        if (invoiceNameLowerCase.includes(searchLowerCase)) {
+          invoicesFiltered[key] = invoice;
+        }
+      });
+      return invoicesFiltered;
+    }
+    return state.invoices;
+  },
+  outstandingInvoices: (state, getters) => {
+    // object destructuring { ...sample }
+    const { ...invoicesFiltered } = getters.invoicesFiltered;
     const invoices = {};
-    Object.keys(state.invoices).forEach((key) => {
-      const invoice = state.invoices[key];
+    Object.keys(invoicesFiltered).forEach((key) => {
+      const invoice = invoicesFiltered[key];
       if (!invoice.paid) {
         invoices[key] = invoice;
       }
     });
     return invoices;
   },
-  paidInvoices: (state) => {
+  paidInvoices: (state, getters) => {
+    // object destructuring { ...sample }
+    const { ...invoicesFiltered } = getters.invoicesFiltered;
     const invoices = {};
-    Object.keys(state.invoices).forEach((key) => {
-      const invoice = state.invoices[key];
+    Object.keys(invoicesFiltered).forEach((key) => {
+      const invoice = invoicesFiltered[key];
       if (invoice.paid) {
         invoices[key] = invoice;
       }
