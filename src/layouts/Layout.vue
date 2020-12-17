@@ -4,8 +4,8 @@
     <q-header elevated>
       <q-toolbar>
         <img class="built-logo" src="~assets/built.png"/>
-        <q-toolbar-title class="fixed-right q-mt-sm q-mr-sm">
-          Payment App
+        <q-toolbar-title class="q-mt-sm q-mr-sm">
+          Payment Station
         </q-toolbar-title>
       </q-toolbar>
     </q-header>
