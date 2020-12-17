@@ -1,7 +1,7 @@
 <template>
    <q-input
    dense
-   class="col"
+   class="col q-ml-md q-mt-md"
    outlined
    v-model="searchField"
    label="Search">

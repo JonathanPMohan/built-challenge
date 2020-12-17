@@ -2,8 +2,8 @@
   <q-page q-pa-md>
 
     <div class="row">
-    <search
-    class="q-ma-md" />
+    <search />
+    <sort  />
     </div>
 
     <p class="q-pa-md" v-if="search && !Object.keys(outstandingInvoices).length
@@ -65,6 +65,7 @@ export default {
     'paid-invoices': () => import('components/Invoices/PaidInvoices.vue'),
     'no-invoices': () => import('components/Invoices/NoInvoices.vue'),
     search: () => import('components/Invoices/Tools/Search.vue'),
+    sort: () => import('components/Invoices/Tools/Sort.vue'),
   },
 };
 </script>

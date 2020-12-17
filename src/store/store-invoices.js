@@ -23,6 +23,7 @@ const state = {
     },
   },
   search: '',
+  sort: 'name',
 };
 /* eslint no-shadow: ["error", { "allow": ["state", "getters"]}] */
 
@@ -38,6 +39,9 @@ const mutations = {
   },
   setSearch(state, value) {
     state.search = value;
+  },
+  setSort(state, value) {
+    state.sort = value;
   },
 };
 
@@ -60,15 +64,37 @@ const actions = {
   setSearch({ commit }, value) {
     commit('setSearch', value);
   },
+  setSort({ commit }, value) {
+    commit('setSort', value);
+  },
 };
 
 const getters = {
   // invoices: () => state.invoices,
-  invoicesFiltered: (state) => {
+  invoicesSorted: (state) => {
+    const invoicesSorted = {};
+    const keysOrdered = Object.keys(state.invoices);
+
+    keysOrdered.sort((a, b) => {
+      const invoiceAProp = state.invoices[a][state.sort].toLowerCase();
+      const invoiceBProp = state.invoices[b][state.sort].toLowerCase();
+
+      if (invoiceAProp > invoiceBProp) return 1;
+      if (invoiceAProp < invoiceBProp) return -1;
+      return 0;
+    });
+
+    keysOrdered.forEach((key) => {
+      invoicesSorted[key] = state.invoices[key];
+    });
+    return invoicesSorted;
+  },
+  invoicesFiltered: (state, getters) => {
+    const { ...invoicesSorted } = getters.invoicesSorted;
     const invoicesFiltered = {};
     if (state.search) {
-      Object.keys(state.invoices).forEach((key) => {
-        const invoice = state.invoices[key];
+      Object.keys(invoicesSorted).forEach((key) => {
+        const invoice = invoicesSorted[key];
         const invoiceNameLowerCase = invoice.name.toLowerCase();
         const searchLowerCase = state.search.toLowerCase();
         if (invoiceNameLowerCase.includes(searchLowerCase)) {
@@ -77,7 +103,7 @@ const getters = {
       });
       return invoicesFiltered;
     }
-    return state.invoices;
+    return invoicesSorted;
   },
   outstandingInvoices: (state, getters) => {
     // object destructuring { ...sample }

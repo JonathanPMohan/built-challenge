@@ -17,25 +17,6 @@
           </q-item-label>
         </q-item-section>
 
-        <q-item-section side>
-          <div class="row">
-          <q-btn
-            @click.stop="showEditInvoice = true"
-            flat
-            round
-            dense
-            color="dark"
-            icon="edit" />
-          <q-btn
-            @click.stop="promptToDelete(id)"
-            flat
-            round
-            dense
-            color="primary"
-            icon="delete" />
-            </div>
-        </q-item-section>
-
         <q-item-section
         side>
           <div class="row">
@@ -56,18 +37,24 @@
           </div>
         </q-item-section>
 
-        <!-- Troubleshooting -->
-        <!-- <div class="col">
-           <q-btn
-            class="q-ml-xl"
+        <q-item-section side>
+          <div class="row">
+          <q-btn
+            @click.stop="showEditInvoice = true"
+            flat
+            round
+            dense
+            color="dark"
+            icon="edit" />
+          <q-btn
             @click.stop="promptToDelete(id)"
             flat
             round
             dense
             color="primary"
-            icon="delete" /> -->
-            <!-- End of Troubleshooting -->
-        <!-- </div> -->
+            icon="delete" />
+            </div>
+        </q-item-section>
             <q-dialog
               v-model="showEditInvoice">
                 <edit-invoice
