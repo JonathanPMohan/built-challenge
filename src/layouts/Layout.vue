@@ -73,6 +73,11 @@ export default {
           to: '/pageB',
         },
         {
+          label: 'Request',
+          icon: 'request_quote',
+          to: '/loanRequest',
+        },
+        {
           label: 'Settings',
           icon: 'settings',
           to: '/settings',

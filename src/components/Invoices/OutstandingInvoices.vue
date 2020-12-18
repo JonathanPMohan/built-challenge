@@ -35,7 +35,6 @@ export default {
   },
 };
 </script>
-    ListHeader
 
 <style lang="scss">
 
