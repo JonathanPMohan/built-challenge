@@ -3,6 +3,7 @@
   <q-item
       @click="updateInvoice({ id: id, updates: { paid: !invoice.paid } })"
       :class="!invoice.paid ? 'bg-grey-1' : 'bg-grey-3'"
+      v-touch-hold:1000.mouse="showEditInvoiceModal"
       clickable
       v-ripple>
         <q-item-section side top>
@@ -12,8 +13,9 @@
         </q-item-section>
         <q-item-section>
           <q-item-label
-          :class="{ 'text-strikethrough' : invoice.paid }">
-          {{invoice.name}}
+          :class="{ 'text-strikethrough' : invoice.paid }"
+          v-html="$options.filters.searchHighlight(invoice.name, search)">
+          <!-- {{invoice.name | searchHighlight(search) }} -->
           </q-item-label>
         </q-item-section>
 
@@ -25,7 +27,7 @@
           size="15px"
           class="q-mr-sm"
           ></q-icon>
-          <q-item-label caption>{{ invoice.dueDate }}</q-item-label>
+          <q-item-label caption>{{ invoice.dueDate | dateDisplay }}</q-item-label>
           </div>
           <div class="col">
           <small>
@@ -40,7 +42,7 @@
         <q-item-section side>
           <div class="row">
           <q-btn
-            @click.stop="showEditInvoice = true"
+            @click.stop="showEditInvoiceModal"
             flat
             round
             dense
@@ -67,7 +69,8 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex';
+import { date } from 'quasar';
 
 export default {
   props: ['invoice', 'id'],
@@ -76,8 +79,14 @@ export default {
       showEditInvoice: false,
     };
   },
+  computed: {
+    ...mapState('invoices', ['search']),
+  },
   methods: {
     ...mapActions('invoices', ['updateInvoice', 'deleteInvoice']),
+    showEditInvoiceModal() {
+      this.showEditInvoice = true;
+    },
     promptToDelete(id) {
       this.$q.dialog({
         title: 'Confirm Delete',
@@ -93,6 +102,19 @@ export default {
       }).onOk(() => {
         this.deleteInvoice(id);
       });
+    },
+  },
+  filters: {
+    dateDisplay(value) {
+      return date.formatDate(value, 'MMM D, YYYY');
+    },
+    searchHighlight(value, search) {
+      if (search) {
+        const searchRegExp = new RegExp(search, 'ig');
+        // using preferred template literal instead of concatenation
+        return value.replace(searchRegExp, (match) => `<span class="bg-yellow-6">${match}</span>`);
+      }
+      return value;
     },
   },
   components: {
