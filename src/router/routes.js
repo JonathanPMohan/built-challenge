@@ -12,6 +12,10 @@ const routes = [
         component: () => import('pages/PageB.vue'),
       },
       {
+        path: '/loanRequest',
+        component: () => import('pages/Request.vue'),
+      },
+      {
         path: '/settings',
         component: () => import('pages/PageSettings.vue'),
       },
