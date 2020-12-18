@@ -3,7 +3,9 @@
    dense
    class="col q-ml-md q-mt-md"
    outlined
+   @keyup.esc="searchField = ''"
    v-model="searchField"
+   v-select-all
    label="Search">
 
     <template v-slot:append>
@@ -21,6 +23,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
+import { selectAll } from 'src/Directives/directive-select-all';
 
 export default {
   computed: {
@@ -36,6 +39,10 @@ export default {
   },
   methods: {
     ...mapActions('invoices', ['setSearch']),
+  },
+  directives: {
+    // convert v-directive to camelCase
+    selectAll,
   },
 };
 </script>

@@ -1,9 +1,10 @@
 <template>
-  <q-page q-pa-md>
+  <q-page>
 
+    <div class="q-pa-md absolute full-width full-height column">
     <div class="row">
-    <search />
-    <sort  />
+      <search class="q-ma-md" />
+      <sort class="q-ma-md"  />
     </div>
 
     <p class="q-pa-md" v-if="search && !Object.keys(outstandingInvoices).length
@@ -14,6 +15,7 @@
     />
     Sorry! We don't find any search results.</p>
 
+<q-scroll-area class="q-scroll-area-invoices">
     <no-invoices
     v-if="!Object.keys(outstandingInvoices).length && !search" />
 <!-- List of Items -->
@@ -22,21 +24,25 @@
       :outstandingInvoices="outstandingInvoices" />
 
     <paid-invoices
+      class="q-mb-xl"
       v-if="Object.keys(paidInvoices).length"
       :paidInvoices="paidInvoices" />
+</q-scroll-area>
 
 <!-- End of List -->
 <!-- Add Button -->
-<div class="absolute-bottom text-center q-mb-lg">
+<div class="absolute-bottom text-center q-mb-lg no-pointer-events">
   <q-btn
     @click="showAddInvoice = true"
     round
+    class="all-pointer-events"
     color="primary"
     size="24px"
     icon="add"
     />
 </div>
 <!-- End of Add Button -->
+</div>
 <!-- Add Dialog Popup -->
   <q-dialog
     v-model="showAddInvoice">
@@ -72,5 +78,8 @@ export default {
     NoInvoices
 
 <style lang="scss">
-
+  .q-scroll-area-invoices {
+    display: flex;
+    flex-grow: 1;
+  }
 </style>
