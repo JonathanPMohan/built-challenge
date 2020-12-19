@@ -16,6 +16,10 @@ const routes = [
         component: () => import('pages/Request.vue'),
       },
       {
+        path: '/messages',
+        component: () => import('pages/Messages.vue'),
+      },
+      {
         path: '/settings',
         component: () => import('pages/PageSettings.vue'),
       },
