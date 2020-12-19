@@ -1,12 +1,26 @@
 ≠≠<template>
   <q-layout view="hHh LpR fFf">
     <!-- Header Element -->
-    <q-header elevated>
+    <q-header>
       <q-toolbar>
-        <img class="built-logo" src="~assets/built.png"/>
+        <a href="/">
+        <img class="built-logo" src="~assets/built.png"/></a>
         <q-toolbar-title class="q-mt-sm q-mr-sm">
-          Payment Station
+          <!-- Payment Station -->
         </q-toolbar-title>
+        <q-space />
+        <div class="q-pa-md q-gutter-sm">
+    <q-btn
+    dense
+    color="black"
+    round
+    size="15px"
+    icon="email"
+    class="q-mr-md"
+    to="/messages">
+      <q-badge color="green" floating>{{ messageCount}}</q-badge>
+    </q-btn>
+  </div>
       </q-toolbar>
     </q-header>
 <!-- Footer Element -->
@@ -55,6 +69,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'Layout',
@@ -90,6 +105,9 @@ export default {
       ],
     };
   },
+  computed: {
+    ...mapGetters('invoices', ['messageCount']),
+  },
 };
 </script>
 
@@ -107,7 +125,7 @@ export default {
   }
 
   .built-logo {
-    width: 25%;
-    padding: 1%;
+    width: 75%;
+    padding: 2%;
   }
 </style>

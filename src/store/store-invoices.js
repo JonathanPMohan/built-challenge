@@ -60,6 +60,39 @@ const state = {
   },
   search: '',
   sort: 'name',
+  // still need to refactor messages to own store
+  messages: {
+    ID1: {
+      subject: 'Recent Request',
+      body: 'loremipsum loremipsum loremipsum loremipsum',
+      dateSent: '2020/05/12',
+    },
+    ID2: {
+      subject: 'Recent Request',
+      body: 'loremipsum loremipsum loremipsum loremipsum',
+      dateSent: '2020/05/12',
+    },
+    ID3: {
+      subject: 'Recent Request',
+      body: 'loremipsum loremipsum loremipsum loremipsum',
+      dateSent: '2020/05/12',
+    },
+    ID4: {
+      subject: 'Recent Request',
+      body: 'loremipsum loremipsum loremipsum loremipsum',
+      dateSent: '2020/05/12',
+    },
+    ID5: {
+      subject: 'Recent Request',
+      body: 'loremipsum loremipsum loremipsum loremipsum',
+      dateSent: '2020/05/12',
+    },
+    ID6: {
+      subject: 'Recent Request',
+      body: 'loremipsum loremipsum loremipsum loremipsum',
+      dateSent: '2020/05/12',
+    },
+  },
 };
 /* eslint no-shadow: ["error", { "allow": ["state", "getters"]}] */
 
@@ -106,6 +139,12 @@ const actions = {
 };
 
 const getters = {
+  // need to refactor messages getter into it's own store
+  messages: () => state.messages,
+  messageCount: (state) => {
+    const count = Object.keys(state.messages).length;
+    return count;
+  },
   // invoices: () => state.invoices,
   invoicesSorted: (state) => {
     const invoicesSorted = {};
