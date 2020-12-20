@@ -1,7 +1,8 @@
 ≠≠<template>
   <q-layout view="hHh LpR fFf">
     <!-- Header Element -->
-    <q-header>
+    <q-header
+    elevated>
       <q-toolbar>
         <a href="/">
         <img class="built-logo" src="~assets/built.png"/></a>

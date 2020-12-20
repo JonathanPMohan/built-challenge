@@ -4,7 +4,7 @@
   enter-active-class="animated zoomIn delay-1s"
   leave-active-class="animated zoomOut delay-1s"
   absolute-top>
-    <q-banner class="bg-grey-3 q-ma-md">
+    <q-banner class="bg-grey-3 q-mb-md">
         <template v-slot:avatar>
           <q-icon name="mood" color="primary" />
         </template>
