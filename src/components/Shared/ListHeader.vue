@@ -2,7 +2,7 @@
   <q-banner
   inline-actions
   :class="bgColor"
-  class="q-ma-md list-header text-dark text-center">
+  class="list-header text-dark text-center">
       <span class="text-bold text-subtitle1"><slot></slot></span>
     </q-banner>
 </template>

@@ -3,8 +3,8 @@
 
     <div class="q-pa-md absolute full-width full-height column">
     <div class="row">
-      <search class="q-ma-md" />
-      <sort class="q-ma-md"  />
+      <search class="q-mb-md" />
+      <sort class="q-mb-md q-ml-md"  />
     </div>
 
     <p class="q-pa-md" v-if="search && !Object.keys(outstandingInvoices).length
@@ -17,7 +17,8 @@
 
 <q-scroll-area class="q-scroll-area-invoices">
     <no-invoices
-    v-if="!Object.keys(outstandingInvoices).length && !search" />
+    v-if="!Object.keys(outstandingInvoices).length &&
+    !search && !settings.displayInvoicesInOneList" />
 <!-- List of Items -->
     <outstanding-invoices
       v-if="Object.keys(outstandingInvoices).length"
@@ -63,6 +64,7 @@ export default {
   },
   computed: {
     ...mapGetters('invoices', ['outstandingInvoices', 'paidInvoices']),
+    ...mapGetters('settings', ['settings']),
     ...mapState('invoices', ['search']),
   },
   components: {

@@ -1,7 +1,7 @@
 <template>
    <q-input
    dense
-   class="col q-ml-md q-mt-md"
+   class="col q-mt-md"
    outlined
    @keyup.esc="searchField = ''"
    v-model="searchField"

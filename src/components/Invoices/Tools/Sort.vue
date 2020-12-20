@@ -1,6 +1,6 @@
 <template>
    <q-select
-      class="col q-ml-md q-mt-md q-mr-md"
+      class="col q-mt-md"
       outlined
       v-model="sortBy"
       :options="options"

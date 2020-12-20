@@ -6,13 +6,13 @@
   absolute-top>
     <div>
       <list-header
+      v-if="!settings.displayInvoicesInOneList"
       bgColor="bg-grey-4"
       >Outstanding Invoices</list-header>
 
       <q-list
         bordered
-        separator
-        class="q-ma-md">
+        separator>
 
           <invoice
           v-for="(invoice, key) in outstandingInvoices"
@@ -26,9 +26,13 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 
 export default {
   props: ['outstandingInvoices'],
+  computed: {
+    ...mapGetters('settings', ['settings']),
+  },
   components: {
     invoice: () => import('components/Invoices/Invoice.vue'),
     'list-header': () => import('components/Shared/ListHeader.vue'),
