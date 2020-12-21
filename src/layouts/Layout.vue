@@ -89,14 +89,14 @@ export default {
       leftDrawerOpen: false,
       navs: [
         {
-          label: 'Page A',
+          label: 'Pay',
           icon: 'list',
           to: '/',
         },
         {
-          label: 'Page B',
+          label: 'Reminders',
           icon: 'list',
-          to: '/pageB',
+          to: '/reminders',
         },
         {
           label: 'Request',
