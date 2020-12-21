@@ -20,6 +20,10 @@ const routes = [
         component: () => import('pages/Messages.vue'),
       },
       {
+        path: '/paymenthistory',
+        component: () => import('pages/PaymentHistory.vue'),
+      },
+      {
         path: '/settings',
         component: () => import('pages/PageSettings.vue'),
       },

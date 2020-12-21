@@ -101,6 +101,14 @@ export default {
         persistent: true,
       }).onOk(() => {
         this.deleteInvoice(id);
+        this.$q.notify({
+          color: 'white',
+          textColor: 'black',
+          position: 'bottom-right',
+          icon: 'cloud_done',
+          iconColor: 'white',
+          message: 'Your invoice has been deleted',
+        });
       });
     },
   },
@@ -112,7 +120,7 @@ export default {
       if (search) {
         const searchRegExp = new RegExp(search, 'ig');
         // using preferred template literal instead of concatenation
-        return value.replace(searchRegExp, (match) => `<span class="bg-yellow-6">${match}</span>`);
+        return value.replace(searchRegExp, (match) => `<span class="bg-blue-2">${match}</span>`);
       }
       return value;
     },
