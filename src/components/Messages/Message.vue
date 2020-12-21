@@ -9,6 +9,7 @@
         <q-item-section side top>
           <q-item-label caption>{{ message.dateSent | dateDisplay }} |
             {{ messageTimeSent }}</q-item-label>
+            <div class="row">
            <q-btn
             dense
             color="primary"
@@ -18,13 +19,22 @@
             class=""
             :to="{ name: 'messageDetails',
             params: { messageId: id, subject: message.subject }}" />
+
+            <q-btn
+            @click.stop="promptToDelete(id)"
+            flat
+            round
+            dense
+            color="primary"
+            icon="delete" />
+            </div>
         </q-item-section>
       </q-item>
 
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import { date } from 'quasar';
 
 export default {
@@ -44,6 +54,33 @@ export default {
         return date.formatDate(`${this.message.dateSent} ${this.message.timeSent}`);
       }
       return this.message.timeSent;
+    },
+  },
+  methods: {
+    ...mapActions('messages', ['deleteMessage']),
+    promptToDelete(id) {
+      this.$q.dialog({
+        title: 'Confirm Delete',
+        message: 'Delete this Message?',
+        ok: {
+          push: true,
+          color: 'blue',
+        },
+        cancel: {
+          color: 'negative',
+        },
+        persistent: true,
+      }).onOk(() => {
+        this.deleteMessage(id);
+        this.$q.notify({
+          color: 'white',
+          textColor: 'black',
+          position: 'bottom-right',
+          icon: 'cloud_done',
+          iconColor: 'white',
+          message: 'Your message has been deleted',
+        });
+      });
     },
   },
   filters: {
