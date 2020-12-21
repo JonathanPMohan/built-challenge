@@ -22,6 +22,16 @@
       <q-badge color="green" floating>{{ messageCount}}</q-badge>
     </q-btn>
   </div>
+  <div>
+    <q-btn
+    dense
+    flat
+    size="15px"
+    icon-right="account_circle"
+    label="Login"
+    class="q-mr-md"
+    to="/auth" />
+    </div>
       </q-toolbar>
     </q-header>
 <!-- Footer Element -->
