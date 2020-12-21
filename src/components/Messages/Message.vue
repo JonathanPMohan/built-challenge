@@ -9,7 +9,15 @@
         <q-item-section side top>
           <q-item-label caption>{{ message.dateSent | dateDisplay }} |
             {{ messageTimeSent }}</q-item-label>
-          <q-icon name="mail" color="primary" />
+           <q-btn
+            dense
+            color="primary"
+            flat
+            size="12px"
+            icon="email"
+            class=""
+            :to="{ name: 'messageDetails',
+            params: { messageId: id, subject: message.subject }}" />
         </q-item-section>
       </q-item>
 

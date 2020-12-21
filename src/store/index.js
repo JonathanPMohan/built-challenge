@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 
 import invoices from './store-invoices';
 import settings from './store-settings';
+import messages from './store-messages';
 
 Vue.use(Vuex);
 
@@ -20,6 +21,7 @@ export default function (/* { ssrContext } */) {
     modules: {
       invoices,
       settings,
+      messages,
     },
 
     // enable strict mode (adds overhead!)

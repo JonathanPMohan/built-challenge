@@ -19,7 +19,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('invoices', ['messages']),
+    ...mapGetters('messages', ['messages']),
   },
   components: {
     'message-list': () => import('components/Messages/MessageList.vue'),
