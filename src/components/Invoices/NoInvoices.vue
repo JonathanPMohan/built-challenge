@@ -16,7 +16,8 @@
           class="q-pa-xs"
           size="sm"
           color="primary"
-          label="Payment History" />
+          label="Payment History"
+          to="/paymenthistory" />
         </template>
       </q-banner>
   </transition>

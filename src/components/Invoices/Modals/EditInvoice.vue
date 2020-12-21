@@ -46,6 +46,14 @@ export default {
         id: this.id,
         updates: this.invoiceToSubmit,
       });
+      this.$q.notify({
+        color: 'white',
+        textColor: 'black',
+        position: 'bottom-right',
+        icon: 'cloud_done',
+        iconColor: 'white',
+        message: 'Your invoice has been edited',
+      });
       this.$emit('close');
     },
   },

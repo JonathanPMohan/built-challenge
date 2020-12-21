@@ -5,7 +5,9 @@
         padding
         class="q-mb-md"
         >
-      <q-item-label header>Settings</q-item-label>
+      <q-item-label
+      class="bg-grey-4 q-ma-sm"
+      header>Settings</q-item-label>
 
       <q-item tag="label" v-ripple>
         <q-item-section>
@@ -30,7 +32,11 @@
 
     </q-list>
 <q-list bordered padding>
-      <q-item-label header>More</q-item-label>
+
+      <q-item-label
+      class="bg-grey-4 q-ma-sm"
+      header
+      >More</q-item-label>
 
       <q-item
       to="/settings/help"
@@ -108,6 +114,9 @@ export default {
 };
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+  .settings-header {
+    border-top-left-radius: 5px !important;
+    border-top-right-radius: 5px !important;
+  }
 </style>

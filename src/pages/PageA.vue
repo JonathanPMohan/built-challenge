@@ -77,7 +77,6 @@ export default {
   },
 };
 </script>
-    NoInvoices
 
 <style lang="scss">
   .q-scroll-area-invoices {

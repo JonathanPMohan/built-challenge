@@ -47,6 +47,14 @@ export default {
     ...mapActions('invoices', ['addInvoice']),
     submitInvoice() {
       this.addInvoice(this.invoiceToSubmit);
+      this.$q.notify({
+        color: 'white',
+        textColor: 'black',
+        position: 'bottom-right',
+        icon: 'cloud_done',
+        iconColor: 'white',
+        message: 'Your invoice has been added',
+      });
       this.$emit('close');
     },
   },
