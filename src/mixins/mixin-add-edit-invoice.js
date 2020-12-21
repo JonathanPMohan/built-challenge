@@ -13,5 +13,6 @@ export default {
     'modal-due-date': () => import('components/Invoices/Modals/Shared/ModalDueDate.vue'),
     'modal-invoice-total': () => import('components/Invoices/Modals/Shared/ModalInvoiceTotal.vue'),
     'modal-save-button': () => import('components/Invoices/Modals/Shared/ModalButtons.vue'),
+    'modal-pay-button': () => import('components/Invoices/Modals/Shared/ModalPayButton.vue'),
   },
 };
