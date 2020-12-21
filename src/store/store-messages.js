@@ -1,4 +1,4 @@
-// import Vue from 'vue';
+import Vue from 'vue';
 // import { uid } from 'quasar';
 
 const state = {
@@ -21,34 +21,20 @@ const state = {
       dateSent: '2020/05/12',
       timeSent: '11:30',
     },
-    ID4: {
-      subject: 'Recent Request',
-      body: 'loremipsum loremipsum loremipsum loremipsum',
-      dateSent: '2020/05/12',
-      timeSent: '5:30',
-    },
-    ID5: {
-      subject: 'Recent Request',
-      body: 'loremipsum loremipsum loremipsum loremipsum',
-      dateSent: '2020/05/12',
-      timeSent: '20:30',
-    },
-    ID6: {
-      subject: 'Recent Request',
-      body: 'loremipsum loremipsum loremipsum loremipsum',
-      dateSent: '2020/05/12',
-      timeSent: '14:30',
-    },
   },
 };
 /* eslint no-shadow: ["error", { "allow": ["state", "getters"]}] */
 
 const mutations = {
-
+  deleteMessage(state, id) {
+    Vue.delete(state.messages, id);
+  },
 };
 
 const actions = {
-
+  deleteMessage({ commit }, id) {
+    commit('deleteMessage', id);
+  },
 };
 
 const getters = {

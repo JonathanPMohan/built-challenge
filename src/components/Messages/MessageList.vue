@@ -6,9 +6,11 @@
 >
     <div>
       <list-header
+      v-if="Object.keys(messages).length"
       bgColor="bg-grey-4"
       > Current Messages</list-header>
       <q-list
+        v-if="Object.keys(messages).length"
         bordered
         separator
         class="q-ma-md">

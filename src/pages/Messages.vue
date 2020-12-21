@@ -2,6 +2,8 @@
   <q-page>
     <div class="q-pa-md absolute full-width full-height column">
       <q-scroll-area class="q-scroll-area-messages">
+        <no-messages
+        v-if="!Object.keys(messages).length" />
         <message-list
         :messages="messages" />
       </q-scroll-area>
@@ -23,6 +25,7 @@ export default {
   },
   components: {
     'message-list': () => import('components/Messages/MessageList.vue'),
+    'no-messages': () => import('components/Messages/NoMessages.vue'),
   },
 };
 </script>
