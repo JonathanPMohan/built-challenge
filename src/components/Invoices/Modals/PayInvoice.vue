@@ -1,7 +1,7 @@
 <template>
 
   <q-card>
-      <modal-header>Edit Invoice</modal-header>
+      <modal-header>Pay Invoice</modal-header>
 <!-- Beginning of Form Component -->
         <q-form @submit.prevent="submitForm">
 
