@@ -1,3 +1,5 @@
+import MessageDetails from 'pages/messageDetails';
+
 const routes = [
   {
     path: '/',
@@ -20,9 +22,9 @@ const routes = [
         component: () => import('pages/Messages.vue'),
       },
       {
-        path: '/messages/:messageId/details',
+        path: '/messages/:id/details',
         name: 'messageDetails',
-        component: () => import('pages/MessageDetails.vue'),
+        component: MessageDetails,
         props: true,
       },
       {

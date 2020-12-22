@@ -18,7 +18,7 @@
             icon="email"
             class=""
             :to="{ name: 'messageDetails',
-            params: { messageId: id, subject: message.subject }}" />
+            params: { id: id }}" />
 
             <q-btn
             @click.stop="promptToDelete(id)"

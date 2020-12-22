@@ -1,4 +1,4 @@
-≠≠<template>
+<template>
   <q-layout view="hHh LpR fFf">
     <!-- Header Element -->
     <q-header
@@ -90,7 +90,7 @@ export default {
       navs: [
         {
           label: 'Pay',
-          icon: 'list',
+          icon: 'payment',
           to: '/',
         },
         {
