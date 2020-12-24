@@ -89,14 +89,16 @@ export default {
     },
     promptToDelete(id) {
       this.$q.dialog({
-        title: 'Confirm Delete',
-        message: 'Delete this invoice?',
+        title: '<div class="bg-grey-4 rounded-borders q-pa-sm"><div><div><span class="text-dark q-pa-xs"><strong>CONFIRM DELETE</strong></span></div></div>',
+        message: 'Delete this Payment Reminder?',
+        html: true,
         ok: {
           push: true,
           color: 'blue',
         },
         cancel: {
-          color: 'negative',
+          color: 'grey-4',
+          textColor: 'dark',
         },
         persistent: true,
       }).onOk(() => {
@@ -132,5 +134,4 @@ export default {
 </script>
 
 <style lang="scss">
-
 </style>

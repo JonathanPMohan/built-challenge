@@ -5,6 +5,7 @@
   leave-active-class="animated zoomOut delay-1s">
   <div class="q-pa-md" style="full-width">
 <div class="form-div q-pa-md q-ma-sm q-mt-xs">
+  <modal-loan-header>Request A Loan</modal-loan-header>
     <q-form
       @submit="onSubmit"
       @reset="onReset"
@@ -85,7 +86,10 @@
 </template>
 
 <script>
+import mixinAddEditInvoice from 'src/mixins/mixin-add-edit-invoice';
+
 export default {
+  mixins: [mixinAddEditInvoice],
   data() {
     return {
       name: '',
@@ -134,7 +138,7 @@ export default {
   .form-div {
     margin: auto;
     width: 75%;
-    border: 1px solid $primary;
+    border: 1px solid $black;
     border-radius: 5px;
   }
 </style>

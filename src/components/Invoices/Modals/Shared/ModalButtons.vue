@@ -1,6 +1,8 @@
 <template>
     <q-card-actions align="right">
         <q-btn
+        class="q-mr-sm"
+        dense
         label="SAVE"
         color="primary"
         type="submit"

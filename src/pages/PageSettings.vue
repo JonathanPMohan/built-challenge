@@ -6,7 +6,7 @@
         class="q-mb-md"
         >
       <q-item-label
-      class="bg-grey-4 q-ma-sm"
+      class="bg-grey-4 q-ma-sm rounded-borders text-dark"
       header>Settings</q-item-label>
 
       <q-item tag="label" v-ripple>
@@ -34,7 +34,7 @@
 <q-list bordered padding>
 
       <q-item-label
-      class="bg-grey-4 q-ma-sm"
+      class="bg-grey-4 q-ma-sm rounded-borders text-dark"
       header
       >More</q-item-label>
 

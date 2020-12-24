@@ -3,7 +3,8 @@
     <!-- Header Element -->
     <q-header
     elevated>
-      <q-toolbar>
+      <q-toolbar
+      class="bg-white">
         <a href="/">
         <img class="built-logo" src="~assets/built.png"/></a>
         <q-toolbar-title class="q-mt-sm q-mr-sm">
@@ -14,16 +15,17 @@
     <q-btn
     dense
     color="black"
-    round
+    flat
     size="15px"
     icon="email"
     class="q-mr-md"
     to="/messages">
-      <q-badge color="green" floating>{{ messageCount}}</q-badge>
+      <q-badge color="primary" floating>{{ messageCount}}</q-badge>
     </q-btn>
   </div>
   <div>
     <q-btn
+    color="black"
     dense
     flat
     size="15px"
@@ -35,7 +37,9 @@
       </q-toolbar>
     </q-header>
 <!-- Footer Element -->
-     <q-footer>
+     <q-footer
+     elevated
+     class="bg-white text-black">
         <q-tabs>
         <q-route-tab
         v-for="nav in navs"
@@ -135,8 +139,18 @@ export default {
     }
   }
 
+  .q-route-tab {
+    .exact-active-class {
+    color: primary !important;
+    }
+  }
+
   .built-logo {
     width: 75%;
     padding: 2%;
+  }
+
+  .navs {
+    color: $black;
   }
 </style>
