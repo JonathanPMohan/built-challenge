@@ -60,14 +60,16 @@ export default {
     ...mapActions('messages', ['deleteMessage']),
     promptToDelete(id) {
       this.$q.dialog({
-        title: 'Confirm Delete',
+        title: '<div class="bg-grey-4 rounded-borders q-pa-sm"><div><span class="text-dark q-pa-xs"><strong>CONFIRM DELETE</strong></span></div></div>',
         message: 'Delete this Message?',
+        html: true,
         ok: {
           push: true,
           color: 'blue',
         },
         cancel: {
-          color: 'negative',
+          color: 'grey-4',
+          textColor: 'dark',
         },
         persistent: true,
       }).onOk(() => {

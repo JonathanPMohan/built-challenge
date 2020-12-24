@@ -1,6 +1,5 @@
 <template>
-  <q-page>
-<p class="q-pt-md text-center text-h6">Contact Built To Request A Loan</p>
+  <q-page padding>
 <loan-request />
   </q-page>
 </template>

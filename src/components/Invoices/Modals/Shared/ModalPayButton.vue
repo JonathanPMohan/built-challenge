@@ -1,6 +1,8 @@
 <template>
     <q-card-actions align="right">
         <q-btn
+        dense
+        class="q-pl-md q-pr-md q-mr-sm"
         label="PAY"
         color="green"
         type="submit"

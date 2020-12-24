@@ -9,6 +9,7 @@ export default {
   },
   components: {
     'modal-header': () => import('components/Invoices/Modals/Shared/ModalHeader.vue'),
+    'modal-loan-header': () => import('components/Loans/Modals/Shared/ModalLoanHeader.vue'),
     'modal-invoice-name': () => import('components/Invoices/Modals/Shared/ModalInvoiceName.vue'),
     'modal-due-date': () => import('components/Invoices/Modals/Shared/ModalDueDate.vue'),
     'modal-invoice-total': () => import('components/Invoices/Modals/Shared/ModalInvoiceTotal.vue'),

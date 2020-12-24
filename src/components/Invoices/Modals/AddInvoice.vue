@@ -1,7 +1,7 @@
 <template>
 
   <q-card>
-      <modal-header>Add Invoice</modal-header>
+      <modal-header>Add Reminder</modal-header>
 <!-- Beginning of Form Component -->
         <q-form @submit.prevent="submitForm">
 
