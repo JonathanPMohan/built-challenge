@@ -18,6 +18,10 @@ const routes = [
         component: () => import('pages/Request.vue'),
       },
       {
+        path: '/profile',
+        component: () => import('pages/Profile.vue'),
+      },
+      {
         path: '/messages',
         component: () => import('pages/Messages.vue'),
       },

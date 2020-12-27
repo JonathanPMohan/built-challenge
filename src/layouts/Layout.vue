@@ -108,6 +108,11 @@ export default {
           to: '/loanRequest',
         },
         {
+          label: 'Profile',
+          icon: 'portrait',
+          to: '/profile',
+        },
+        {
           label: 'Settings',
           icon: 'settings',
           to: '/settings',
