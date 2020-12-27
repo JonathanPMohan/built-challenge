@@ -4,6 +4,7 @@ import Vuex from 'vuex';
 import invoices from './store-invoices';
 import settings from './store-settings';
 import messages from './store-messages';
+import userProfile from './store-user-profile';
 
 Vue.use(Vuex);
 
@@ -22,6 +23,7 @@ export default function (/* { ssrContext } */) {
       invoices,
       settings,
       messages,
+      userProfile,
     },
 
     // enable strict mode (adds overhead!)
